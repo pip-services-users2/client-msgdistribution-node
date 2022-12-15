@@ -23,87 +23,47 @@ class MessageDistributionCommandableLambdaClientV1 extends pip_services3_aws_nod
     sendMessage(correlationId, recipient, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email_settings.send_message');
-            try {
-                yield this.callCommand('send_message', correlationId, {
-                    recipient: recipient,
-                    message: message,
-                    parameters: parameters,
-                    method: method
-                });
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
-            finally {
-                timing.endTiming();
-            }
+            yield this.callCommand('send_message', correlationId, {
+                recipient: recipient,
+                message: message,
+                parameters: parameters,
+                method: method
+            });
         });
     }
     sendMessages(correlationId, recipients, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email_settings.send_messages');
-            try {
-                yield this.callCommand('send_messages', correlationId, {
-                    recipients: recipients,
-                    message: message,
-                    parameters: parameters,
-                    method: method
-                });
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
-            finally {
-                timing.endTiming();
-            }
+            yield this.callCommand('send_messages', correlationId, {
+                recipients: recipients,
+                message: message,
+                parameters: parameters,
+                method: method
+            });
         });
     }
     sendMessageToRecipient(correlationId, recipientId, subscription, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email_settings.send_message_to_recipient');
-            try {
-                yield this.callCommand('send_message_to_recipient', correlationId, {
-                    recipient_id: recipientId,
-                    subscription: subscription,
-                    message: message,
-                    parameters: parameters,
-                    method: method
-                });
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
-            finally {
-                timing.endTiming();
-            }
+            yield this.callCommand('send_message_to_recipient', correlationId, {
+                recipient_id: recipientId,
+                subscription: subscription,
+                message: message,
+                parameters: parameters,
+                method: method
+            });
         });
     }
     sendMessageToRecipients(correlationId, recipientIds, subscription, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email_settings.send_message_to_recipients');
-            try {
-                yield this.callCommand('send_message_to_recipients', correlationId, {
-                    recipient_ids: recipientIds,
-                    subscription: subscription,
-                    message: message,
-                    parameters: parameters,
-                    method: method
-                });
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
-            finally {
-                timing.endTiming();
-            }
+            yield this.callCommand('send_message_to_recipients', correlationId, {
+                recipient_ids: recipientIds,
+                subscription: subscription,
+                message: message,
+                parameters: parameters,
+                method: method
+            });
         });
     }
 }

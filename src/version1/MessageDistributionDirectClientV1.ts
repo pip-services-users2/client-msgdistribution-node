@@ -29,11 +29,10 @@ export class MessageDistributionDirectClientV1 extends DirectClient<any> impleme
             await this._controller.sendMessage(
                 correlationId, recipient, message, parameters, method
             );
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
     
@@ -46,11 +45,10 @@ export class MessageDistributionDirectClientV1 extends DirectClient<any> impleme
             await this._controller.sendMessages(
                 correlationId, recipients, message, parameters, method
             );
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -63,11 +61,10 @@ export class MessageDistributionDirectClientV1 extends DirectClient<any> impleme
             await this._controller.sendMessageToRecipient(
                 correlationId, recipientId, subscription, message, parameters, method
             );
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -80,11 +77,10 @@ export class MessageDistributionDirectClientV1 extends DirectClient<any> impleme
             await this._controller.sendMessageToRecipients(
                 correlationId, recipientIds, subscription, message, parameters, method
             );
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 

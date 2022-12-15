@@ -29,13 +29,11 @@ class MessageDistributionDirectClientV1 extends pip_services3_rpc_nodex_1.Direct
             let timing = this.instrument(correlationId, 'msg_distribution.send_message');
             try {
                 yield this._controller.sendMessage(correlationId, recipient, message, parameters, method);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -45,13 +43,11 @@ class MessageDistributionDirectClientV1 extends pip_services3_rpc_nodex_1.Direct
             let timing = this.instrument(correlationId, 'msg_distribution.send_messages');
             try {
                 yield this._controller.sendMessages(correlationId, recipients, message, parameters, method);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -61,13 +57,11 @@ class MessageDistributionDirectClientV1 extends pip_services3_rpc_nodex_1.Direct
             let timing = this.instrument(correlationId, 'msg_distribution.send_message_to_recipient');
             try {
                 yield this._controller.sendMessageToRecipient(correlationId, recipientId, subscription, message, parameters, method);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -77,13 +71,11 @@ class MessageDistributionDirectClientV1 extends pip_services3_rpc_nodex_1.Direct
             let timing = this.instrument(correlationId, 'msg_distribution.send_message_to_recipients');
             try {
                 yield this._controller.sendMessageToRecipients(correlationId, recipientIds, subscription, message, parameters, method);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }

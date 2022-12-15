@@ -36,13 +36,11 @@ class MessageDistributionGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcCli
                 let response = yield this.call('send_message', correlationId, request);
                 if (response.error != null)
                     throw MessageDistributionGrpcConverterV1_1.MessageDistributionGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -59,13 +57,11 @@ class MessageDistributionGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcCli
                 let response = yield this.call('send_messages', correlationId, request);
                 if (response.error != null)
                     throw MessageDistributionGrpcConverterV1_1.MessageDistributionGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -83,13 +79,11 @@ class MessageDistributionGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcCli
                 let response = yield this.call('send_message_to_recipient', correlationId, request);
                 if (response.error != null)
                     throw MessageDistributionGrpcConverterV1_1.MessageDistributionGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -107,13 +101,11 @@ class MessageDistributionGrpcClientV1 extends pip_services3_grpc_nodex_1.GrpcCli
                 let response = yield this.call('send_message_to_recipients', correlationId, request);
                 if (response.error != null)
                     throw MessageDistributionGrpcConverterV1_1.MessageDistributionGrpcConverterV1.toError(response.error);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }

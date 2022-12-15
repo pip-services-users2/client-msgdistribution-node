@@ -37,13 +37,11 @@ export class MessageDistributionGrpcClientV1 extends GrpcClient implements IMess
 
             if (response.error != null)
                 throw MessageDistributionGrpcConverterV1.toError(response.error);
-
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }     
+        }   
     }
     
     public async sendMessages(correlationId: string, recipients: RecipientV1[],
@@ -64,11 +62,10 @@ export class MessageDistributionGrpcClientV1 extends GrpcClient implements IMess
             if (response.error != null)
                 throw MessageDistributionGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -91,12 +88,11 @@ export class MessageDistributionGrpcClientV1 extends GrpcClient implements IMess
             if (response.error != null)
                 throw MessageDistributionGrpcConverterV1.toError(response.error);
 
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }      
+        }    
     }
 
     public async sendMessageToRecipients(correlationId: string, recipientIds: string[], subscription: string,
@@ -117,13 +113,11 @@ export class MessageDistributionGrpcClientV1 extends GrpcClient implements IMess
 
             if (response.error != null)
                 throw MessageDistributionGrpcConverterV1.toError(response.error);
-
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }       
+        }    
     }
 
 }
