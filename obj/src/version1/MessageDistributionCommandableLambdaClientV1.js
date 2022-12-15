@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MessageDistributionHttpClientV1 = void 0;
+exports.MessageDistributionCommandableLambdaClientV1 = void 0;
 const pip_services3_commons_nodex_1 = require("pip-services3-commons-nodex");
-const pip_services3_rpc_nodex_1 = require("pip-services3-rpc-nodex");
-class MessageDistributionHttpClientV1 extends pip_services3_rpc_nodex_1.CommandableHttpClient {
+const pip_services3_aws_nodex_1 = require("pip-services3-aws-nodex");
+class MessageDistributionCommandableLambdaClientV1 extends pip_services3_aws_nodex_1.CommandableLambdaClient {
     constructor(config) {
-        super('v1/msg_distribution');
+        super('msg_distribution');
         let thisConfig = pip_services3_commons_nodex_1.ConfigParams.fromValue(config);
         this._defaultParameters = thisConfig.getSection('parameters');
         if (config != null)
@@ -23,7 +23,7 @@ class MessageDistributionHttpClientV1 extends pip_services3_rpc_nodex_1.Commanda
     sendMessage(correlationId, recipient, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'msg_distribution.send_message');
+            let timing = this.instrument(correlationId, 'email_settings.send_message');
             try {
                 yield this.callCommand('send_message', correlationId, {
                     recipient: recipient,
@@ -44,7 +44,7 @@ class MessageDistributionHttpClientV1 extends pip_services3_rpc_nodex_1.Commanda
     sendMessages(correlationId, recipients, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'msg_distribution.send_messages');
+            let timing = this.instrument(correlationId, 'email_settings.send_messages');
             try {
                 yield this.callCommand('send_messages', correlationId, {
                     recipients: recipients,
@@ -65,7 +65,7 @@ class MessageDistributionHttpClientV1 extends pip_services3_rpc_nodex_1.Commanda
     sendMessageToRecipient(correlationId, recipientId, subscription, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'msg_distribution.send_message_to_recipient');
+            let timing = this.instrument(correlationId, 'email_settings.send_message_to_recipient');
             try {
                 yield this.callCommand('send_message_to_recipient', correlationId, {
                     recipient_id: recipientId,
@@ -87,7 +87,7 @@ class MessageDistributionHttpClientV1 extends pip_services3_rpc_nodex_1.Commanda
     sendMessageToRecipients(correlationId, recipientIds, subscription, message, parameters, method) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'msg_distribution.send_message_to_recipients');
+            let timing = this.instrument(correlationId, 'email_settings.send_message_to_recipients');
             try {
                 yield this.callCommand('send_message_to_recipients', correlationId, {
                     recipient_ids: recipientIds,
@@ -107,5 +107,5 @@ class MessageDistributionHttpClientV1 extends pip_services3_rpc_nodex_1.Commanda
         });
     }
 }
-exports.MessageDistributionHttpClientV1 = MessageDistributionHttpClientV1;
-//# sourceMappingURL=MessageDistributionHttpClientV1.js.map
+exports.MessageDistributionCommandableLambdaClientV1 = MessageDistributionCommandableLambdaClientV1;
+//# sourceMappingURL=MessageDistributionCommandableLambdaClientV1.js.map

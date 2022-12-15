@@ -1,9 +1,9 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
-import { CommandableLambdaClient } from 'pip-services3-aws-nodex';
+import { CommandableHttpClient } from 'pip-services3-rpc-nodex';
 import { MessageV1 } from './MessageV1';
 import { RecipientV1 } from './RecipientV1';
 import { IMessageDistributionClientV1 } from './IMessageDistributionClientV1';
-export declare class MessageDistributionLambdaClientV1 extends CommandableLambdaClient implements IMessageDistributionClientV1 {
+export declare class MessageDistributionCommandableHttpClientV1 extends CommandableHttpClient implements IMessageDistributionClientV1 {
     private _defaultParameters;
     constructor(config?: any);
     sendMessage(correlationId: string, recipient: RecipientV1, message: MessageV1, parameters: ConfigParams, method: string): Promise<void>;

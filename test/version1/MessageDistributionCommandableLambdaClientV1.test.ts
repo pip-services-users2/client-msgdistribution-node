@@ -1,9 +1,9 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
 
 import { MessageDistributionClientFixtureV1 } from './MessageDistributionClientFixtureV1';
-import { MessageDistributionLambdaClientV1 } from '../../src/version1/MessageDistributionLambdaClientV1';
+import { MessageDistributionCommandableLambdaClientV1 } from '../../src/version1/MessageDistributionCommandableLambdaClientV1';
 
-suite('MessageDistributionLambdaClient', ()=> {
+suite('MessageDistributionCommandableLambdaClient', ()=> {
     let AWS_LAMDBA_ARN = process.env["AWS_LAMDBA_ARN"] || "";
     let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
     let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
@@ -24,11 +24,11 @@ suite('MessageDistributionLambdaClient', ()=> {
     if (lambdaConfig.getAsNullableString("connection.protocol") != "aws")
         return;
 
-    let client: MessageDistributionLambdaClientV1;
+    let client: MessageDistributionCommandableLambdaClientV1;
     let fixture: MessageDistributionClientFixtureV1;
 
     setup(async () => {
-        client = new MessageDistributionLambdaClientV1();
+        client = new MessageDistributionCommandableLambdaClientV1();
         client.configure(lambdaConfig);
 
         fixture = new MessageDistributionClientFixtureV1(client);

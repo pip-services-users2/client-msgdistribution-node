@@ -9,8 +9,8 @@ import { EmailNullClientV1 } from 'client-email-node';
 import { SmsNullClientV1 } from 'client-sms-node';
 
 import { MessageDistributionController } from 'service-msgdistribution-node';
-import { MessageDistributionHttpServiceV1 } from 'service-msgdistribution-node';
-import { MessageDistributionHttpClientV1 } from '../../src/version1/MessageDistributionHttpClientV1';
+import { MessageDistributionCommandableHttpServiceV1 } from 'service-msgdistribution-node';
+import { MessageDistributionCommandableHttpClientV1 } from '../../src/version1/MessageDistributionCommandableHttpClientV1';
 import { MessageDistributionClientFixtureV1 } from './MessageDistributionClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -19,9 +19,9 @@ var httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('MessageDistributionHttpClientV1', ()=> {
-    let service: MessageDistributionHttpServiceV1;
-    let client: MessageDistributionHttpClientV1;
+suite('MessageDistributionCommandableHttpClientV1', ()=> {
+    let service: MessageDistributionCommandableHttpServiceV1;
+    let client: MessageDistributionCommandableHttpClientV1;
     let fixture: MessageDistributionClientFixtureV1;
 
     suiteSetup(async () => {
@@ -38,7 +38,7 @@ suite('MessageDistributionHttpClientV1', ()=> {
         let emailDeliveryClient = new EmailNullClientV1();
         let smsDeliveryClient = new SmsNullClientV1();
 
-        service = new MessageDistributionHttpServiceV1();
+        service = new MessageDistributionCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
@@ -48,12 +48,12 @@ suite('MessageDistributionHttpClientV1', ()=> {
             new Descriptor('service-email', 'client', 'null', 'default', '1.0'), emailDeliveryClient,
             new Descriptor('service-sms', 'client', 'null', 'default', '1.0'), smsDeliveryClient,
             new Descriptor('service-msgdistribution', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-msgdistribution', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-msgdistribution', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new MessageDistributionHttpClientV1();
+        client = new MessageDistributionCommandableHttpClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 
