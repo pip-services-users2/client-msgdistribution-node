@@ -3,8 +3,8 @@ import { ConfigParams } from 'pip-services3-commons-nodex';
 import { References } from 'pip-services3-commons-nodex';
 import { ConsoleLogger } from 'pip-services3-components-nodex';
 
-import { EmailSettingsMemoryClientV1 } from 'client-emailsettings-node';
-import { SmsSettingsMemoryClientV1 } from 'client-smssettings-node';
+import { EmailSettingsMockClientV1 } from 'client-emailsettings-node';
+import { SmsSettingsMockClientV1 } from 'client-smssettings-node';
 import { EmailNullClientV1 } from 'client-email-node';
 import { SmsNullClientV1 } from 'client-sms-node';
 
@@ -28,10 +28,10 @@ suite('MessageDistributionCommandableGrpcClientV1', ()=> {
         let logger = new ConsoleLogger();
         let controller = new MessageDistributionController();
 
-        let emailSettingsClient = new EmailSettingsMemoryClientV1();
+        let emailSettingsClient = new EmailSettingsMockClientV1();
         emailSettingsClient.setSettings(null, { id: '1', name: 'User 1', email: 'somebody@somewhere.com' });
 
-        let smsSettingsClient = new SmsSettingsMemoryClientV1();
+        let smsSettingsClient = new SmsSettingsMockClientV1();
         smsSettingsClient.setSettings(null, { id: '1', name: 'User 1', phone: '+12345678901' });
 
         let emailDeliveryClient = new EmailNullClientV1();
@@ -42,8 +42,8 @@ suite('MessageDistributionCommandableGrpcClientV1', ()=> {
 
         let references: References = References.fromTuples(
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
-            new Descriptor('service-emailsettings', 'client', 'memory', 'default', '1.0'), emailSettingsClient,
-            new Descriptor('service-smssettings', 'client', 'memory', 'default', '1.0'), smsSettingsClient,
+            new Descriptor('service-emailsettings', 'client', 'mock', 'default', '1.0'), emailSettingsClient,
+            new Descriptor('service-smssettings', 'client', 'mock', 'default', '1.0'), smsSettingsClient,
             new Descriptor('service-email', 'client', 'null', 'default', '1.0'), emailDeliveryClient,
             new Descriptor('service-sms', 'client', 'null', 'default', '1.0'), smsDeliveryClient,
             new Descriptor('service-msgdistribution', 'controller', 'default', 'default', '1.0'), controller,
